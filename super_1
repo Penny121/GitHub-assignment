@@ -1,0 +1,21 @@
+  Serial.println(/*photocellVal*/pos);
+  photocellVal = analogRead(photocellPin);
+  if(photocellVal < minLight)
+  {
+      if(flag == 0)
+      {
+          pos++;
+          myservo.write(pos);
+          delay(5);
+          if(pos == 180)
+              flag = 1 ;
+      }
+      if(flag == 1)
+      {
+          pos--;
+          myservo.write(pos);
+          delay(5);
+          if(pos == 0)
+              flag = 0 ;
+      }
+  }
