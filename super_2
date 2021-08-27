@@ -1,0 +1,23 @@
+#include<LiquidCrystal_I2C.h>
+#include <Wire.h>
+#include <DHT.h>
+#define pin 2
+#define DHTTYPE DHT11
+LiquidCrystal_I2C lcd(0x27,16,2);
+DHT dht2 (pin,DHTTYPE);
+
+void setup()
+{
+  lcd.init();
+  lcd.backlight();
+  lcd.print("I AM DETECTOR");
+  delay(1000);
+  dht2.begin();
+}
+
+void loop()
+{
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Tem:");
+}
